@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var month = input[1];
         var year = input[2];
         var today = new Date();
-        var date = new Date(month.value + "/" + day.value + "/" + year.value);
+        var date = new Date(`${month.value} / ${day.value} / ${year.value}`);
 
         if (isDateValid(day, month, year, today, date)) {
             calculateAge(today, date);
