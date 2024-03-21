@@ -17,14 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// function parseDate(inputs...) {
-//     if (day.value === EMPTY_STRING || day.value === null) {
-//         return { success: false };
-//     }
-
-//     return  { success: true, date: }
-// }
-
 function isDateValid(day, month, year, today, date){
     var isDayNull = day.value === EMPTY_STRING || day.value === null;
     var isMonthNull = month.value === EMPTY_STRING || month.value === null;
@@ -35,8 +27,10 @@ function isDateValid(day, month, year, today, date){
     var isYearInThePast = year.value <= today.getFullYear();
 
     if (isDayCorrect && isMonthCorrect && isYearCorrect) {
-        date = new Date(+year.value, +month.value - 1, +day.value);
-        date.setUTCFullYear(+year.value);
+   //     date = new Date(+year.value, +month.value - 1, +day.value);
+        date.setFullYear(+year.value);
+        date.setMonth(+month.value - 1);
+        date.setDate(+day.value);
     }
 
     var isDateCorrect = date.getFullYear() === +year.value && date.getMonth() === +month.value - 1 && date.getDate() === +day.value;
