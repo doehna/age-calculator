@@ -1,11 +1,11 @@
 
-.attribution { 
+/* .attribution { 
     font-size: 11px; text-align: center; 
 }
 
 .attribution a { 
     color: hsl(228, 45%, 44%); 
-}
+} */
 
 :root{
     --Purple: hsl(259, 100%, 65%);
@@ -56,7 +56,8 @@ input {
     border-width: 1px;
 }
 
-input:hover {
+input:hover,
+input:active {
     cursor: pointer;
     border-color: var(--Purple);
 }

@@ -7,14 +7,23 @@ document.addEventListener('DOMContentLoaded', function() {
         var month = input[1];
         var year = input[2];
         var today = new Date();
-        var date = new Date(`${month.value} / ${day.value} / ${year.value}`);
+        var date = new Date();
 
-        if (isDateValid(day, month, year, today, date)) {
-            calculateAge(today, date);
+        var result = isDateValid(day, month, year, today, date);
+        if (result.success) {
+            calculateAge(today, result.date);
         }
     });
 
 });
+
+// function parseDate(inputs...) {
+//     if (day.value === EMPTY_STRING || day.value === null) {
+//         return { success: false };
+//     }
+
+//     return  { success: true, date: }
+// }
 
 function isDateValid(day, month, year, today, date){
     var isDayNull = day.value === EMPTY_STRING || day.value === null;
@@ -22,27 +31,40 @@ function isDateValid(day, month, year, today, date){
     var isYearNull = year.value === EMPTY_STRING || year.value === null;
     var isDayCorrect = (!isNaN(day.value) && day.value >= 1 && day.value <= 31) && !isDayNull;
     var isMonthCorrect = (!isNaN(month.value) && month.value >= 1 && month.value <= 12) && !isMonthNull;
-    var isYearCorrect = (!isNaN(year.value) && year.value <= today.getFullYear()) && !isYearNull;
+    var isYearCorrect = !isNaN(year.value) && !isYearNull;
+    var isYearInThePast = year.value <= today.getFullYear();
+
+    if (isDayCorrect && isMonthCorrect && isYearCorrect) {
+        date = new Date(+year.value, +month.value - 1, +day.value);
+        date.setUTCFullYear(+year.value);
+    }
+
+    var isDateCorrect = date.getFullYear() === +year.value && date.getMonth() === +month.value - 1 && date.getDate() === +day.value;
 
     if(!isDayCorrect || !isMonthCorrect || !isYearCorrect){
         validateInput(isDayCorrect, isDayNull, day, VALIDATION_ERROR_INCORRECT_DAY);
         validateInput(isMonthCorrect, isMonthNull, month, VALIDATION_ERROR_INCORRECT_MONTH);
-        validateInput(isYearCorrect, isYearNull, year, VALIDATION_ERROR_DATE_IN_THE_FUTURE);
-        return false;
+        validateInput(isYearCorrect, isYearNull, year, VALIDATION_ERROR_INCORRECT_YEAR);        
+        return { success: false };
     }
-    else if (isNaN(date.getDate())) {
+    else if(!isYearInThePast)
+    {
+        validateInput(isYearInThePast, isYearNull, year, VALIDATION_ERROR_DATE_IN_THE_FUTURE);    
+        return { success: false };
+    }
+    else if (isNaN(date.getDate()) || !isDateCorrect) {
         addDayValidation(VALIDATION_ERROR_INCORRECT_DATE, day, month, year);
-        return false;
+        return { success: false };
     }
     else if (today < date) {
         addDayValidation(VALIDATION_ERROR_DATE_IN_THE_FUTURE, day, month, year);
-        return false;
+        return { success: false };
     }
     else {
         removeValidationMessagesAndStyles(day);
         removeValidationMessagesAndStyles(month);
         removeValidationMessagesAndStyles(year);
-        return true
+        return { success: true, date: date };
     }
 }
 
@@ -69,12 +91,13 @@ function validateInput(isInputCorrect, isInputNull, input, validationMessage) {
 }
 
 function removeValidationMessagesAndStyles(element){
-    element.style.borderColor = 'var(--LightGrey)';
+    element.style.borderColor = EMPTY_STRING;
+    
     if(element.nextElementSibling !== null) {
         element.nextElementSibling.textContent = EMPTY_STRING;
     }
     if(element.previousElementSibling !== null) {
-        element.previousElementSibling.style.color = 'var(--SmokeyGrey)';
+        element.previousElementSibling.style.color = EMPTY_STRING;
     }
 }
 
