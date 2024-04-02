@@ -1,4 +1,4 @@
-:root{
+:root {
     --Purple: hsl(259, 100%, 65%);
     --LightRed: hsl(0, 100%, 67%);
     --White: hsl(0, 0%, 100%);
@@ -10,138 +10,81 @@
 
 @font-face {
     font-family: Poppins;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Regular.ttf");
+    src: url("/assets/fonts/Poppins-Regular.ttf");
 }
 
 @font-face {
     font-family: Poppins-Bold;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Bold.ttf");
+    src: url("/assets/fonts/Poppins-Bold.ttf");
 }
 
 @font-face {
     font-family: Poppins-ExtraBoldItalic;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-ExtraBoldItalic.ttf");
+    src: url("/assets/fonts/Poppins-ExtraBoldItalic.ttf");
 }
 
 @font-face {
     font-family: Poppins-Italic;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Italic.ttf");
+    src: url("/assets/fonts/Poppins-Italic.ttf");
 }
 
 body {
     background-color: var(--OffWhite);
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    width: 100%;
 }
 
 input {
-    height: 70px;
-    width: 160px;
-    font-size: 32px;
+    height: 2em;
+    max-width: 160px;
+    font-size: clamp(1.3rem, 1.5vw, 2rem);
     color: var(--OffBlack);
     font-family: Poppins-Bold;
-    border-style: solid;
     border-radius: 10px;
-    border-color: var(--LightGrey);
-    border-width: 1px;
+    border: 1px solid var(--LightGrey);
+    padding-left: 0.7em;
+    /* width style color */
 }
 
-input:hover,
-input:active {
-    cursor: pointer;
-    border-color: var(--Purple);
-}
-
-div.arrow {
-    height: 96px;
-    width: 96px;
-    background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow.jpg');
-    position: absolute;
-    z-index: 1;
-}
-div.arrow:hover {
-    cursor: pointer;
-    background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-active.jpg');
-}
-.inputName {
-    font-family: Poppins-Bold;
-    color: var(--SmokeyGrey);
-    font-weight: 400;
-    font-size: 13px;
-    margin-bottom: 10px;
-    letter-spacing: .2rem;
-}
-
-input::placeholder {
-    color: var(--OffBlack);
-    font-size: 32px;
-    font-family: Poppins-Bold;
-}
-
-.container{
-    position: fixed;
+.container {
     display: flex;
     flex-direction: column;
     background-color: var(--White);
     max-width: 840px;
     width: 80%;
-    height: 650px;
+    min-height: 450px;
+    max-height: 650px;
     border-radius: 20px;
     border-bottom-right-radius: 200px;
+    margin: 50px 5% auto 5%;
 }
 
-.dates {
+.date-entry-section {
     display: flex;
-    gap: 30px;
-    margin: 50px;
+    gap: 5vw;
+    margin: clamp(10px, 5vw, 50px);
     margin-bottom: 0px;
 }
 
-.date {
+.date-entry-section__date-entry {
     display: flex;
     flex-direction: column;
+    flex: 1, 1, 0px;
+    min-width: 65px;
+    max-width: 160px;
 }
 
-.results {
-    display: flex;
-    flex-direction: column;
-    margin: 50px;
-    margin-top: 0px;
+.date-input {
+    font-family: Poppins-Bold;
+    color: var(--SmokeyGrey);
+    font-weight: 400;
+    font-size: 0.81rem;
+    margin-bottom: 10px;
+    letter-spacing: .2rem;
 }
 
-.result {
-    display: flex;
-    font-family: Poppins-ExtraBoldItalic;
-    font-size: 90px;
-    line-height: 1.3;
-    letter-spacing: 2px;
-}
-
-.number {
-    color: var(--Purple);
-}
-
-.line {
-    content: ''; /* Dodanie pustej treści */
-    bottom: -10px; /* Odległość od dolnej krawędzi */
-    left: 0; /* Początek linii od lewej strony */
-    width: 100%; /* Szerokość linii */
-    height: 2px; /* Grubość linii */
-    background-color: var(--OffWhite); /* Kolor linii */
-    margin-left: 50px;
-}
-
-.separator {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-    margin-right: 40px;
-    height: 100px;
-}
-
-.validationError {
+.date-input-validation-error {
     color: var(--LightRed);
     font-family: Poppins-Italic;
     font-size: 13px;
@@ -149,78 +92,94 @@ input::placeholder {
     min-height: 20px;
 }
 
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 867px) {
-    input {
-        width: 100%;
+.separator {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 20px auto;
+    width: 90%;
+    /*top right bottom left*/
+    height: 100px;
+}
+
+.separator__line-left {
+    flex: 1;
+    height: 2px;
+    background-color: var(--OffWhite);
+}
+
+.separator__arrow {
+    height: 96px;
+    width: 96px;
+    border-radius: 50%;
+    background: url('/assets/images/arrow.jpg');
+}
+
+.separator__line-right {
+    flex: 0;
+    height: 0px;
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 40px clamp(10px, 7vw, 40px); /*top right bottom left*/
+}
+
+.results-section__result {
+    display: flex;
+    font-family: Poppins-ExtraBoldItalic;
+    font-size: clamp(2rem, 10vw, 5.5rem); /*min, pref, max)*/
+    line-height: 1;
+}
+
+.results-section__number {
+    color: var(--Purple);
+    margin-right: 0.2em;
+}
+
+@media (hover:hover) {
+    input:hover,
+    input:active {
+        cursor: pointer;
+        border-color: var(--Purple);
     }
 
-    .container {
-        width: 90%;
+    .separator__arrow:hover,
+    .separator__arrow:active {
+        cursor: pointer;
+        background: url('/assets/images/arrow-active.jpg');
     }
-    
-    .result {
-        font-size: 70px;
+}
+
+@media (hover:none) {
+    input:active {
+        cursor: pointer;
+        border-color: var(--Purple);
     }
 
-    .validationError {
-        font-size: 11px;
-    }
-
-    .separator {
-        justify-content: center;
-        margin-right: 20px;
-        margin-left: 20px;
-    }
-
-    .line {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .dates {
-        margin-left: 30px;
-    }
-
-    .results {
-        margin-left: 30px;
+    .separator__arrow:active {
+        cursor: pointer;
+        background: url('/assets/images/arrow-active-mobile.jpg');
     }
 }
 
 /* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 567px) {
-    input {
-        width: 100%;
-    }
-
+@media only screen and (max-width: 600px) {
     .container {
         width: 95%;
+        border-bottom-right-radius: 100px;
+    }
+
+    .separator__line-right {
+        flex: 1;
+        height: 2px;
+        background-color: var(--OffWhite);
     }
     
-    .result {
-        font-size: 65px;
-    }
-
-    .validationError {
-        font-size: 10px;
-    }
-
-    .separator {
-        justify-content: center;
-        margin-right: 20px;
-        margin-left: 20px;
-    }
-    
-    .line {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-
-    .dates {
-        margin-left: 20px;
-    }
-
-    .results {
-        margin-left: 20px;
+    .separator__arrow {
+        height: 57px;
+        width: 57px;
+        background: url('/assets/images/arrow-mobile.jpg');
     }
 }

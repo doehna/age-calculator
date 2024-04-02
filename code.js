@@ -1,30 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var arrow = document.querySelector('.arrow');
+    let arrow = document.querySelector('.separator__arrow');
 
     arrow.addEventListener('click', function(){
-        var input = document.querySelectorAll("input");
-        var day = input[0];
-        var month = input[1];
-        var year = input[2];
-        var today = new Date();
-        var date = new Date();
+        let input = document.querySelectorAll("input");
+        let day = input[0];
+        let month = input[1];
+        let year = input[2];
+        let today = new Date();
+        let date = new Date();
 
-        var result = isDateValid(day, month, year, today, date);
+        let result = isDateValid(day, month, year, today, date);
         if (result.success) {
             calculateAge(today, result.date);
         }
     });
-
 });
 
 function isDateValid(day, month, year, today, date){
-    var isDayNull = day.value === EMPTY_STRING || day.value === null;
-    var isMonthNull = month.value === EMPTY_STRING || month.value === null;
-    var isYearNull = year.value === EMPTY_STRING || year.value === null;
-    var isDayCorrect = (!isNaN(day.value) && day.value >= 1 && day.value <= 31) && !isDayNull;
-    var isMonthCorrect = (!isNaN(month.value) && month.value >= 1 && month.value <= 12) && !isMonthNull;
-    var isYearCorrect = !isNaN(year.value) && !isYearNull;
-    var isYearInThePast = year.value <= today.getFullYear();
+    let isDayNull = day.value === EMPTY_STRING || day.value === null;
+    let isMonthNull = month.value === EMPTY_STRING || month.value === null;
+    let isYearNull = year.value === EMPTY_STRING || year.value === null;
+    let isDayCorrect = (!isNaN(day.value) && day.value >= 1 && day.value <= 31) && !isDayNull;
+    let isMonthCorrect = (!isNaN(month.value) && month.value >= 1 && month.value <= 12) && !isMonthNull;
+    let isYearCorrect = !isNaN(year.value) && !isYearNull;
+    let isYearInThePast = year.value <= today.getFullYear();
 
     if (isDayCorrect && isMonthCorrect && isYearCorrect) {
    //     date = new Date(+year.value, +month.value - 1, +day.value);
@@ -33,7 +32,7 @@ function isDateValid(day, month, year, today, date){
         date.setDate(+day.value);
     }
 
-    var isDateCorrect = date.getFullYear() === +year.value && date.getMonth() === +month.value - 1 && date.getDate() === +day.value;
+    let isDateCorrect = date.getFullYear() === +year.value && date.getMonth() === +month.value - 1 && date.getDate() === +day.value;
 
     if(!isDayCorrect || !isMonthCorrect || !isYearCorrect){
         validateInput(isDayCorrect, isDayNull, day, VALIDATION_ERROR_INCORRECT_DAY);
@@ -66,7 +65,6 @@ function addDayValidation (message, day, month, year) {
     addValidationMessageAndStyles(day, message);
     addValidationMessageAndStyles(month, EMPTY_STRING);
     addValidationMessageAndStyles(year, EMPTY_STRING);
-
 }
 
 function validateInput(isInputCorrect, isInputNull, input, validationMessage) {
@@ -106,15 +104,18 @@ function addValidationMessageAndStyles (element, validationMessage) {
 }
 
 function calculateAge(today, date) {
-    var answears = document.querySelectorAll(".number");
-    var diffMs = today - date;
-    var age = new Date(diffMs);
+    let answears = document.querySelectorAll(".results-section__number");
+    let diffMs = today - date;
+    let age = new Date(diffMs);
 
-    var years = Math.abs(age.getUTCFullYear() - 1970);
-    var months = Math.abs(age.getMonth());
-    var days = Math.abs(age.getUTCDate() - 1);
+    let years = Math.abs(age.getUTCFullYear() - 1970);
+    let months = Math.abs(age.getMonth());
+    let days = Math.abs(age.getUTCDate() - 1);
 
     answears[0].textContent = years + SPACE;
     answears[1].textContent = months + SPACE;
     answears[2].textContent = days + SPACE;
 }
+
+
+

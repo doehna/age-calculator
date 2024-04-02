@@ -7,56 +7,62 @@
 	<!-- displays site properly based on user's device -->
 
 	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="/normalize.css">
+	<link rel="stylesheet" href="/styles.css">
 
 	<title>Age calculator app</title>
 
-	<script type="text/javascript" src="/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/constants.js"></script>
-	<script type="text/javascript" src="/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/code.js"></script>
+	<script type="text/javascript" src="/constants.js"></script>
+	<script type="text/javascript" src="/code.js"></script>
 </head>
 
 <body>
 	<div class="container">
-		<div class="dates">
-			<div class="date">
-				<div class="inputName">DAY</div>
+		<div class="date-entry-section">
+			<div class="date-entry-section__date-entry">
+				<div class="date-input">DAY</div>
 				<input type="text" placeholder="DD">
-				<div class="validationError"></div>
+				<div class="date-input-validation-error"></div>
 			</div>
-			<div class="date">
-				<div class="inputName">MONTH</div>
+			<div class="date-entry-section__date-entry">
+				<div class="date-input">MONTH</div>
 				<input type="text" placeholder="MM">
-				<div class="validationError"></div>
+				<div class="date-input-validation-error"></div>
 			</div>
-			<div class="date">
-				<div class="inputName">YEAR</div>
+			<div class="date-entry-section__date-entry">
+				<div class="date-input">YEAR</div>
 				<input type="text" placeholder="YYYY">
-				<div class="validationError"></div>
+				<div class="date-input-validation-error"></div>
 			</div>
 		</div>
 		<div class="separator">
-			<div class="line"></div>
-			<div class="arrow"></div>
+			<div class="separator__line-left"></div>
+			<div class="separator__arrow"></div>
+			<div class="separator__line-right"></div>
 		</div>
-		<div class="results">
-			<div class="result">
-				<div class="number" id="years">- -</div>
+		<div class="results-section">
+			<div class="results-section__result">
+				<div class="results-section__number" id="years">- -</div>
 				<div> years</div>
 			</div>
-			<div class="result">
-				<div class="number" id="months">- -</div>
+			<div class="results-section__result">
+				<div class="results-section__number" id="months">- -</div>
 				<div> months</div>
 			</div>
-			<div class="result">
-				<div class="number" id="days">- -</div>
+			<div class="results-section__result">
+				<div class="results-section__number" id="days">- -</div>
 				<div> days</div>
 			</div>
 		</div>
 	</div>
-	<div class="attribution">
+</body>
+<!-- <footer>
 		Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
 		Coded by <a href="#">Dorota Wojdecka</a>.
-	</div>
-</body>
+</footer> -->
 
 </html>
+
+
+
+
