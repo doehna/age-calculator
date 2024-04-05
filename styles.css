@@ -10,22 +10,22 @@
 
 @font-face {
     font-family: Poppins;
-    src: url("/assets/fonts/Poppins-Regular.ttf");
+    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Regular.ttf");
 }
 
 @font-face {
     font-family: Poppins-Bold;
-    src: url("/assets/fonts/Poppins-Bold.ttf");
+    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Bold.ttf");
 }
 
 @font-face {
     font-family: Poppins-ExtraBoldItalic;
-    src: url("/assets/fonts/Poppins-ExtraBoldItalic.ttf");
+    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-ExtraBoldItalic.ttf");
 }
 
 @font-face {
     font-family: Poppins-Italic;
-    src: url("/assets/fonts/Poppins-Italic.ttf");
+    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Italic.ttf");
 }
 
 body {
@@ -64,15 +64,13 @@ input {
     display: flex;
     gap: clamp(10px, 5vw, 30px);
     margin: 50px clamp(10px, 5vw, 50px) 0px clamp(10px, 5vw, 50px);
+    border: none;
     /*top right bottom left*/
 }
 
 .date-entry-section__date-entry {
     display: flex;
     flex-direction: column;
-    flex: 1, 1, 0px;
-    min-width: 65px;
-    max-width: 160px;
 }
 
 .date-input {
@@ -81,14 +79,14 @@ input {
     font-weight: 400;
     font-size: 0.81rem;
     margin-bottom: 10px;
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
 }
 
 .date-input-validation-error {
     color: var(--LightRed);
     font-family: Poppins-Italic;
-    font-size: 13px;
-    margin-top: 5px;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
 }
 
 .separator {
@@ -102,7 +100,7 @@ input {
 }
 
 .separator__line-left {
-    flex: 1;
+    flex: 1; /* flex-grow */
     height: 2px;
     background-color: var(--OffWhite);
 }
@@ -111,7 +109,7 @@ input {
     height: 96px;
     width: 96px;
     border-radius: 50%;
-    background: url('/assets/images/arrow.jpg');
+    background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow.jpg');
 }
 
 .separator__line-right {
@@ -147,7 +145,7 @@ input {
     .separator__arrow:hover,
     .separator__arrow:active {
         cursor: pointer;
-        background: url('/assets/images/arrow-active.jpg');
+        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-active.jpg');
     }
 }
 
@@ -159,7 +157,7 @@ input {
 
     .separator__arrow:active {
         cursor: pointer;
-        background: url('/assets/images/arrow-active-mobile.jpg');
+        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-active-mobile.jpg');
     }
 }
 
@@ -179,6 +177,12 @@ input {
     .separator__arrow {
         height: 57px;
         width: 57px;
-        background: url('/assets/images/arrow-mobile.jpg');
+        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-mobile.jpg');
+    }
+
+    .separator__arrow:hover,
+    .separator__arrow:active {
+        cursor: pointer;
+        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-active-mobile.jpg');
     }
 }

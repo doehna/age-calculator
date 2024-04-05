@@ -1,120 +1,133 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let arrow = document.querySelector('.separator__arrow');
 
-    arrow.addEventListener('click', function(){
-        let input = document.querySelectorAll("input");
-        let day = input[0];
-        let month = input[1];
-        let year = input[2];
-        let today = new Date();
+    arrow.addEventListener('click', function () {
+        let now = new Date();
         let date = new Date();
 
-        let result = isDateValid(day, month, year, today, date);
+        let result = isDateValid(now, date);
         if (result.success) {
-            calculateAge(today, result.date);
+            calculateAge(now, result.date);
         }
     });
 });
 
-function isDateValid(day, month, year, today, date){
-    let isDayNull = day.value === EMPTY_STRING || day.value === null;
-    let isMonthNull = month.value === EMPTY_STRING || month.value === null;
-    let isYearNull = year.value === EMPTY_STRING || year.value === null;
-    let isDayCorrect = (!isNaN(day.value) && day.value >= 1 && day.value <= 31) && !isDayNull;
-    let isMonthCorrect = (!isNaN(month.value) && month.value >= 1 && month.value <= 12) && !isMonthNull;
-    let isYearCorrect = !isNaN(year.value) && !isYearNull;
-    let isYearInThePast = year.value <= today.getFullYear();
+function isDateValid(now, date) {
+    let dayId = document.querySelector("#dayId");
+    let monthId = document.querySelector("#monthId");
+    let yearId = document.querySelector("#yearId");
 
-    if (isDayCorrect && isMonthCorrect && isYearCorrect) {
-   //     date = new Date(+year.value, +month.value - 1, +day.value);
-        date.setFullYear(+year.value);
-        date.setMonth(+month.value - 1);
-        date.setDate(+day.value);
+    //validates each input separately
+    let result = ValidateEveryInput(dayId, monthId, yearId, now);
+
+    //if any of the inputs is incorrect return result
+    if(!result.success) {
+        return result;
     }
 
-    let isDateCorrect = date.getFullYear() === +year.value && date.getMonth() === +month.value - 1 && date.getDate() === +day.value;
+    //if each entry is correct, set the date with given data and validate if that date exists in the past
+    date.setFullYear(+yearId.value);
+    date.setMonth(+monthId.value - 1);
+    date.setDate(+dayId.value);
 
-    if(!isDayCorrect || !isMonthCorrect || !isYearCorrect){
-        validateInput(isDayCorrect, isDayNull, day, VALIDATION_ERROR_INCORRECT_DAY);
-        validateInput(isMonthCorrect, isMonthNull, month, VALIDATION_ERROR_INCORRECT_MONTH);
-        validateInput(isYearCorrect, isYearNull, year, VALIDATION_ERROR_INCORRECT_YEAR);        
+    let isDateCorrect = date.getFullYear() === +yearId.value && date.getMonth() === +monthId.value - 1 && date.getDate() === +dayId.value;
+
+    //the date is incorrect
+    if (isNaN(date.getDate()) || !isDateCorrect) {
+        addInvalidDateValidation(VALIDATION_ERROR_INCORRECT_DATE);
         return { success: false };
     }
-    else if(!isYearInThePast)
-    {
-        validateInput(isYearInThePast, isYearNull, year, VALIDATION_ERROR_DATE_IN_THE_FUTURE);    
-        return { success: false };
-    }
-    else if (isNaN(date.getDate()) || !isDateCorrect) {
-        addDayValidation(VALIDATION_ERROR_INCORRECT_DATE, day, month, year);
-        return { success: false };
-    }
-    else if (today < date) {
-        addDayValidation(VALIDATION_ERROR_DATE_IN_THE_FUTURE, day, month, year);
+    //the date is in the future
+    else if (now < date) {
+        addInvalidDateValidation(VALIDATION_ERROR_DATE_IN_THE_FUTURE);
         return { success: false };
     }
     else {
-        removeValidationMessagesAndStyles(day);
-        removeValidationMessagesAndStyles(month);
-        removeValidationMessagesAndStyles(year);
+        removeAllValidation(dayId, monthId, yearId)
         return { success: true, date: date };
     }
 }
 
-function addDayValidation (message, day, month, year) {
-    addValidationMessageAndStyles(day, message);
-    addValidationMessageAndStyles(month, EMPTY_STRING);
-    addValidationMessageAndStyles(year, EMPTY_STRING);
+function removeAllValidation(dayId, monthId, yearId) {
+    removeValidationMessagesAndStyles(dayId);
+    removeValidationMessagesAndStyles(monthId);
+    removeValidationMessagesAndStyles(yearId);
 }
 
-function validateInput(isInputCorrect, isInputNull, input, validationMessage) {
-    if(!isInputCorrect) {
-        if(isInputNull)
-        {
+function ValidateEveryInput (dayId, monthId, yearId, now) {
+    let isDayCorrect = !!dayId.value && (!isNaN(dayId.value) && dayId.value >= 1 && dayId.value <= 31);
+    let isMonthCorrect = !!monthId.value && (!isNaN(monthId.value) && monthId.value >= 1 && monthId.value <= 12);
+    let isYearCorrect = !!yearId.value && (!isNaN(yearId.value));
+    let isYearInThePast = !!yearId.value && (yearId.value <= now.getFullYear());
+    let isAnyValidFlag = true;
+
+    isAnyValidFlag = isInputValid(isDayCorrect, !dayId.value, dayId, VALIDATION_ERROR_INCORRECT_DAY) && isAnyValidFlag;
+    isAnyValidFlag = isInputValid(isMonthCorrect, !monthId.value, monthId, VALIDATION_ERROR_INCORRECT_MONTH) && isAnyValidFlag;
+    isAnyValidFlag = isInputValid(isYearCorrect, !yearId.value, yearId, VALIDATION_ERROR_INCORRECT_YEAR) && isAnyValidFlag;
+    isAnyValidFlag = isInputValid(isYearInThePast, !yearId.value, yearId, VALIDATION_ERROR_DATE_IN_THE_FUTURE) && isAnyValidFlag;
+
+    return { success: isAnyValidFlag };
+}
+
+function addInvalidDateValidation(message) {
+    let dayId = document.getElementById("dayId");
+    let monthId = document.getElementById("monthId");
+    let yearId = document.getElementById("yearId");
+    addValidationMessageAndStyles(dayId, message);
+    addValidationMessageAndStyles(monthId, EMPTY_STRING);
+    addValidationMessageAndStyles(yearId, EMPTY_STRING);
+}
+
+function isInputValid(isInputCorrect, isInputNull, input, validationMessage) {
+    if (!isInputCorrect) {
+        if (isInputNull) {
             addValidationMessageAndStyles(input, VALIDATION_ERROR_FIELD_REQUIRED);
+            return false;
         }
         else {
             addValidationMessageAndStyles(input, validationMessage);
+            return false;
         }
     }
     else {
         removeValidationMessagesAndStyles(input);
+
+        return true;
     }
 }
 
-function removeValidationMessagesAndStyles(element){
+function removeValidationMessagesAndStyles(element) {
     element.style.borderColor = EMPTY_STRING;
-    
-    if(element.nextElementSibling !== null) {
+
+    if (element.nextElementSibling !== null) {
         element.nextElementSibling.textContent = EMPTY_STRING;
     }
-    if(element.previousElementSibling !== null) {
+    if (element.previousElementSibling !== null) {
         element.previousElementSibling.style.color = EMPTY_STRING;
     }
 }
 
-function addValidationMessageAndStyles (element, validationMessage) {
+function addValidationMessageAndStyles(element, validationMessage) {
     element.style.borderColor = 'var(--LightRed)';
-    if(element.nextElementSibling !== null) {
-        element.nextElementSibling.textContent=validationMessage;
+    if (element.nextElementSibling !== null) {
+        element.nextElementSibling.textContent = validationMessage;
     }
-    if(element.previousElementSibling !== null) {
+    if (element.previousElementSibling !== null) {
         element.previousElementSibling.style.color = 'var(--LightRed)';
     }
 }
 
-function calculateAge(today, date) {
-    let answears = document.querySelectorAll(".results-section__number");
-    let diffMs = today - date;
+function calculateAge(now, date) {
+    let diffMs = now - date;
     let age = new Date(diffMs);
 
     let years = Math.abs(age.getUTCFullYear() - 1970);
     let months = Math.abs(age.getMonth());
     let days = Math.abs(age.getUTCDate() - 1);
 
-    answears[0].textContent = years + SPACE;
-    answears[1].textContent = months + SPACE;
-    answears[2].textContent = days + SPACE;
+    document.getElementById("yearsResultId").textContent = years + SPACE;
+    document.getElementById("monthsResultId").textContent = months + SPACE;
+    document.getElementById("daysResultId").textContent = days + SPACE;
 }
 
 
