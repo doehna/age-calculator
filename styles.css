@@ -36,7 +36,9 @@ body {
 }
 
 input {
+    box-sizing: border-box;
     height: 2.5em;
+    width: 100%;
     max-width: 120px;
     font-size: clamp(1.3rem, 1.5vw, 2rem);
     color: var(--OffBlack);
@@ -62,7 +64,7 @@ input {
 
 .date-entry-section {
     display: flex;
-    gap: clamp(10px, 5vw, 30px);
+    gap: clamp(3px, 5vw, 30px);
     margin: 50px clamp(10px, 5vw, 50px) 0px clamp(10px, 5vw, 50px);
     border: none;
     /*top right bottom left*/
