@@ -10,22 +10,22 @@
 
 @font-face {
     font-family: Poppins;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Regular.ttf");
+    src: url("/assets/fonts/Poppins-Regular.ttf");
 }
 
 @font-face {
     font-family: Poppins-Bold;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Bold.ttf");
+    src: url("/assets/fonts/Poppins-Bold.ttf");
 }
 
 @font-face {
     font-family: Poppins-ExtraBoldItalic;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-ExtraBoldItalic.ttf");
+    src: url("/assets/fonts/Poppins-ExtraBoldItalic.ttf");
 }
 
 @font-face {
     font-family: Poppins-Italic;
-    src: url("/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/fonts/Poppins-Italic.ttf");
+    src: url("/assets/fonts/Poppins-Italic.ttf");
 }
 
 body {
@@ -109,7 +109,7 @@ input {
     height: 96px;
     width: 96px;
     border-radius: 50%;
-    background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow.jpg');
+    background: url('/assets/images/arrow.jpg');
 }
 
 .separator__line-right {
@@ -145,7 +145,7 @@ input {
     .separator__arrow:hover,
     .separator__arrow:active {
         cursor: pointer;
-        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-active.jpg');
+        background: url('/assets/images/arrow-active.jpg');
     }
 }
 
@@ -157,7 +157,7 @@ input {
 
     .separator__arrow:active {
         cursor: pointer;
-        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-active-mobile.jpg');
+        background: url('/assets/images/arrow-active-mobile.jpg');
     }
 }
 
@@ -177,12 +177,12 @@ input {
     .separator__arrow {
         height: 57px;
         width: 57px;
-        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-mobile.jpg');
+        background: url('/assets/images/arrow-mobile.jpg');
     }
 
     .separator__arrow:hover,
     .separator__arrow:active {
         cursor: pointer;
-        background: url('/Users/dorotawojdecka/Kodowanie/age-calculator-app-main/assets/images/arrow-active-mobile.jpg');
+        background: url('/assets/images/arrow-active-mobile.jpg');
     }
 }
