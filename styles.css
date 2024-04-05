@@ -38,12 +38,13 @@ body {
 input {
     height: 2.5em;
     max-width: 120px;
+    padding-left: 0.7em;
+    width: calc(100% - 1px - 0.7em);
     font-size: clamp(1.3rem, 1.5vw, 2rem);
     color: var(--OffBlack);
     font-family: Poppins-Bold;
     border-radius: 10px;
     border: 1px solid var(--LightGrey);
-    padding-left: 0.7em;
     /* width style color */
 }
 
@@ -62,7 +63,7 @@ input {
 
 .date-entry-section {
     display: flex;
-    gap: clamp(10px, 5vw, 30px);
+    gap: clamp(3px, 5vw, 30px);
     margin: 50px clamp(10px, 5vw, 50px) 0px clamp(10px, 5vw, 50px);
     border: none;
     /*top right bottom left*/
