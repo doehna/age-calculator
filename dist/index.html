@@ -6,38 +6,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- displays site properly based on user's device -->
 
-	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-	<link rel="stylesheet" href="/normalize.css">
-	<link rel="stylesheet" href="/styles.css">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.6aac2c21.png">
+	<link rel="stylesheet" href="/index.843dac01.css">
+	<link rel="stylesheet" href="/index.3b8f328d.css">
 
 	<title>Age calculator app</title>
 
-	<script type="text/javascript" src="/constants.js"></script>
-	<script type="text/javascript" src="/code.js"></script>
+	<script src="/index.e5f18658.js" defer=""></script>
 </head>
 
 <body>
-	<div class="container">
-		<div class="date-entry-section">
+	<main class="container">
+		<form class="date-entry-section">
 			<div class="date-entry-section__date-entry">
 				<label for="dayId" class="date-input">DAY</label>
-				<input id="dayId" type="text" placeholder="DD">
+				<input id="dayId" type="number" placeholder="DD">
 				<div class="date-input-validation-error"></div>
 			</div>
 			<div class="date-entry-section__date-entry">
 				<label for="monthId" class="date-input">MONTH</label>
-				<input id="monthId" type="text" placeholder="MM">
+				<input id="monthId" type="number" placeholder="MM">
 				<div class="date-input-validation-error"></div>
 			</div>
 			<div class="date-entry-section__date-entry">
 				<label for="yearId" class="date-input">YEAR</label>
-				<input id="yearId" type="text" placeholder="YYYY">
+				<input id="yearId" type="number" placeholder="YYYY">
 				<div class="date-input-validation-error"></div>
 			</div>
-		</div>
+		</form>
 		<div class="separator">
 			<div class="separator__line-left"></div>
-			<div class="separator__arrow"></div>
+			<button class="separator__arrow-button"></button>
 			<div class="separator__line-right"></div>
 		</div>
 		<div class="results-section">
@@ -54,7 +53,7 @@
 				<div> days</div>
 			</div>
 		</div>
-	</div>
+	</main>
 </body>
 <!-- <footer>
 		Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
@@ -62,6 +61,8 @@
 </footer> -->
 
 </html>
+
+
 
 
 

@@ -10,22 +10,22 @@
 
 @font-face {
     font-family: Poppins;
-    src: url("/assets/fonts/Poppins-Regular.ttf");
+    src: url("../assets/fonts/Poppins-Regular.ttf");
 }
 
 @font-face {
     font-family: Poppins-Bold;
-    src: url("/assets/fonts/Poppins-Bold.ttf");
+    src: url("../assets/fonts/Poppins-Bold.ttf");
 }
 
 @font-face {
     font-family: Poppins-ExtraBoldItalic;
-    src: url("/assets/fonts/Poppins-ExtraBoldItalic.ttf");
+    src: url("../assets/fonts/Poppins-ExtraBoldItalic.ttf");
 }
 
 @font-face {
     font-family: Poppins-Italic;
-    src: url("/assets/fonts/Poppins-Italic.ttf");
+    src: url("../assets/fonts/Poppins-Italic.ttf");
 }
 
 body {
@@ -37,7 +37,8 @@ body {
 
 input {
     height: 2.5em;
-    max-width: 120px;
+    width: 100%;
+    box-sizing: border-box;
     font-size: clamp(1.3rem, 1.5vw, 2rem);
     color: var(--OffBlack);
     font-family: Poppins-Bold;
@@ -105,11 +106,16 @@ input {
     background-color: var(--OffWhite);
 }
 
-.separator__arrow {
-    height: 96px;
-    width: 96px;
+.separator__arrow-button {
+    height: clamp(57px, 10vw, 96px);
+    width: clamp(57px, 10vw, 96px);
     border-radius: 50%;
-    background: url('/assets/images/arrow.jpg');
+    background: url('../assets/images/arrow.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: none;
+    border: none;
+
 }
 
 .separator__line-right {
@@ -142,10 +148,16 @@ input {
         border-color: var(--Purple);
     }
 
-    .separator__arrow:hover,
-    .separator__arrow:active {
+    .separator__arrow-button:hover,
+    .separator__arrow-button:active {
         cursor: pointer;
-        background: url('/assets/images/arrow-active.jpg');
+        height: clamp(57px, 10vw, 96px);
+        width: clamp(57px, 10vw, 96px);
+        background: url('../assets/images/arrow-active.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: none;
+        border: none;
     }
 }
 
@@ -155,9 +167,15 @@ input {
         border-color: var(--Purple);
     }
 
-    .separator__arrow:active {
+    .separator__arrow-button:active {
         cursor: pointer;
-        background: url('/assets/images/arrow-active-mobile.jpg');
+        height: clamp(57px, 10vw, 96px);
+        width: clamp(57px, 10vw, 96px);
+        background: url('../assets/images/arrow-active.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: none;
+        border: none;
     }
 }
 
@@ -173,16 +191,5 @@ input {
         height: 2px;
         background-color: var(--OffWhite);
     }
-    
-    .separator__arrow {
-        height: 57px;
-        width: 57px;
-        background: url('/assets/images/arrow-mobile.jpg');
-    }
 
-    .separator__arrow:hover,
-    .separator__arrow:active {
-        cursor: pointer;
-        background: url('/assets/images/arrow-active-mobile.jpg');
-    }
 }
