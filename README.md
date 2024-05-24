@@ -9,9 +9,9 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [Getting started](#getting-started)  
+  - [Installation](#installation)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -43,11 +43,6 @@ Users should be able to:
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-npm
-```npm install -g npm```
-
 ### Installation
 
 - Clone the repo
@@ -56,6 +51,8 @@ git clone https://github.com/doehna/age-calculator.git
 - Install NPM packages
 ```npm install```
 
+- Start parcel server
+```npm start```
 
 ## My process
 
@@ -68,15 +65,9 @@ git clone https://github.com/doehna/age-calculator.git
 
 ### Useful resources
 
-- date-fns
+- [date-fns](https://date-fns.org/)
 
 ## Author
 
 - Website - [Dorota Wojdecka](https://github.com/doehna)
 - Frontend Mentor - [@doehna](https://www.frontendmentor.io/profile/doehna)
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
