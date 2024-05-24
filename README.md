@@ -37,7 +37,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://doehna.github.io/age-calculator/)
+- Live Site URL: [https://doehna.github.io/age-calculator/](https://doehna.github.io/age-calculator/)
 
 ## Getting started
 
